@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request
 from weather import get_current_weather
+from waitress import serve
+import logging
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
 
 app = Flask(__name__)
 
@@ -35,4 +39,4 @@ def get_weather():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+    serve(app, host="0.0.0.0", port=8001)
